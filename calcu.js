@@ -1,12 +1,13 @@
-let calculatorOn = true; // Flag to determine whether the calculator is on or off
+let calculatorOn = true;
 let prevNumber = '';
 let currentNumber = '';
 let calculatorSigns = '';
+let errorMessage = '';
 const display = document.getElementById("display");
 const displayTwo = document.getElementById("displayTwo")
 
 function toggleCalculator() {
-    calculatorOn = !calculatorOn; // Toggle the calculator flag
+    calculatorOn = !calculatorOn;
     Clear(); 
     displayTwo.style.display = 'block'
     display.style.display = 'none'
@@ -15,8 +16,8 @@ function toggleCalculator() {
 }
 
 function turnOnCalculator() {
-    calculatorOn = true; // Explicitly turn on the calculator
-    Clear(); // Clear the display when turning on the calculator
+    calculatorOn = true;
+    Clear();
     displayTwo.style.display = 'none'
     display.style.display = 'block'
     timeDisplay.style.display = 'block'
@@ -39,8 +40,9 @@ function appendDecimal() {
 function calculateSquareRoot() {
     const current = parseFloat(currentNumber);
 
-    if (isNaN(current) || current < 0) {
-        alert('Invalid input for square root');
+    if (isNaN(current) || current <= 0) {
+        // alert('Invalid input for square root');
+        display.innerHTML = errorMessage;
         Clear();
         return;
     }
@@ -52,11 +54,20 @@ function calculateSquareRoot() {
     prevNumber = '';
 }
 
+function calculateSquare() {
+    const current = parseFloat(currentNumber);
+
+    if (isNaN(current) || current <= 0) {
+        // alert('Invalid input for square root');
+        display.innerHTML = errorMessage;
+        Clear();
+        return;
+    }
+}
 
 function signs(calc) {
     if (currentNumber === '') return;
 
-    // Display the current calculation on the screen
     display.value = `${prevNumber} ${calculatorSigns} ${currentNumber}`;
 
     if (prevNumber !== '') calcResult();
@@ -77,7 +88,7 @@ function calcResult() {
 
     if (isNaN(prev) || isNaN(current)) {
         alert('Invalid calculation');
-        Clear(); // Clear all values in case of an error
+        Clear();
         return;
     }
 
@@ -96,13 +107,21 @@ function calcResult() {
             break;
         case '÷':
             if (current == 0) {
-                alerts.style.display = 'block'
-                return;
+                errorMessage = 'Syntax Error';
+            } else {
+                totalResult = prev / current;
             }
-            totalResult = prev / current;
             break;
         default:
             break;
+    }
+
+    if (errorMessage) {
+        alerts.innerHTML = errorMessage;
+        alerts.style.display = 'none';
+    } else {
+        display.innerHTML = errorMessage;
+        alerts.style.display = 'none';
     }
 
     display.value = totalResult;
@@ -127,7 +146,6 @@ function updateTime() {
     document.getElementById("timeDisplays").innerHTML = times;
 }
 
-// Call updateTime initially and set it to update every second (1000 milliseconds)
 updateTime();
 setInterval(updateTime, 1000);
 
