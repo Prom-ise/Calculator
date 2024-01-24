@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <link rel="stylesheet" href="calcu.css">
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="calculator container-fluid my-5 col-lg-3 col-9 shadow-sm mt-lg-5 p-3">
+        <div class="time container-fluid ms-1 col-lg-7 col-6 text-dark rounded-3" id="timeDisplay"></div>
+        <div class="times container-fluid ms-1 col-lg-7 col-6 text-dark rounded-3" id="timeDisplays" style="display: none;"></div>
+
+        <div class="promise container-fluid col-lg-10 col-11 text-center">PROMISE CALCULATOR I</div>
+        <input type="text" id="display" class="text-end container-fluid mx-auto col-lg-12 col-12 mb-4" readonly>
+    <input type="text" id="displayTwo" style="display: none;" class="input text-end container-fluid mx-auto col-lg-12 col-12 mb-4" readonly>
+
+    <div class="butt col-lg-7 col-12">
+    <button class="btn btn-danger btn-sm text-light" onclick="toggleCalculator()">OFF</button>
+    <button class="btn btn-success btn-sm text-light " onclick="turnOnCalculator()">ON</button>
+    </div>
+
+    <div class="buttons col-lg-12 col-12">
+        <button class="btn btn-dark text-primary" onclick="Clear()">C</button>
+        <button class="btn btn-dark text-primary" onclick="signs('÷')">÷</button>
+        <button class="btn btn-dark text-primary" onclick="signs('×')">×</button>
+        <button class="btn btn-dark text-primary" onclick="backspace()">«</button>
+        <button class="btn btn-dark text-light" onclick="digit('7')">7</button>
+        <button class="btn btn-dark text-light" onclick="digit('8')">8</button>
+        <button class="btn btn-dark text-light" onclick="digit('9')">9</button>
+        <button class="btn btn-dark text-primary" onclick="signs('-')">-</button>
+        <button class="btn btn-dark text-light" onclick="digit('4')">4</button>
+        <button class="btn btn-dark text-light" onclick="digit('5')">5</button>
+        <button class="btn btn-dark text-light" onclick="digit('6')">6</button>
+        <button class="btn btn-dark text-primary" onclick="signs('+')">+</button>
+        <button class="btn btn-dark text-light" onclick="digit('1')">1</button>
+        <button class="btn btn-dark text-light" onclick="digit('2')">2</button>
+        <button class="btn btn-dark text-light" onclick="digit('3')">3</button>
+        <button class="btn btn-dark text-primary" id="equal" onclick="signs('=')">=</button>
+        <button class="btn btn-dark text-primary" onclick="signs('%')">%</button>
+        <button class="btn btn-dark text-light" onclick="digit('0')">0</button>
+        <button class="btn btn-dark text-primary" onclick="appendDecimal()">.</button>
+        <button class="btn btn-dark text-primary" onclick="signs('sqrt')">√</button>
+        <button class="btn btn-dark text-light" onclick="digit('00')">00</button>
+        <button class="btn btn-dark text-primary" id="ans" onclick="appendAnswer()">Ans</button>
+    </div>
+
+    <div class="alert container-fluid mx-auto col-lg-12 col-11 rounded-3 text-primary bg-dark text-center p-2 mt-4" style="display: none;" id="alerts">
+        Invalid! Cannot divide by Zero <span class="text-light">'0'</span>
+    </div>
+    </div>
+
+    <script src="calcu.js"></script>
+</body>
+</html>

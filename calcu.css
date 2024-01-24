@@ -1,0 +1,79 @@
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 4fr);
+    gap: 8px;
+ }
+
+ #equal{
+    grid-row: span 2;
+ }
+
+ #ans{
+  grid-column: span 2;
+ }
+
+ #display{
+    font-weight: bold;
+    color: black;
+    background-color: lightblue;
+    margin-top: 15px;
+    height: 40px;
+    font-size: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+
+ .calculator{
+    background-color: lightgray;
+    border-radius: 5px;
+    height: 439px;
+    box-sizing: border-box;
+    border: 5px double;
+ }
+
+ .alert{
+   font-size: 18.5px;
+ }
+ 
+ .time{
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   margin-top: -13px;
+   box-sizing: border-box;
+   border: 2px solid;
+   margin-right: 200px;
+   background-color: lightblue;
+ }
+
+ .times{
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   margin-top: -13px;
+   box-sizing: border-box;
+   border: 2px solid;
+   margin-right: 200px;
+   background-color:#718287;
+   color: #718287;
+ }
+
+ .promise{
+   font-family: cursive;
+   margin-bottom: -19px;
+   margin-top: 5px;
+   font-size: 10px;
+   font-weight: 600;
+ }
+
+ .input{
+   font-weight: bold;
+    color: black;
+    background-color: #718287;
+    margin-top: 15px;
+    height: 40px;
+    font-size: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+
+ .butt{
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  gap: 135px;
+ }
