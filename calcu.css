@@ -1,3 +1,9 @@
+body{
+  background-image: radial-gradient(
+    pink, 
+    purple
+  );
+}
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 4fr);
@@ -8,9 +14,9 @@
     grid-row: span 2;
  }
 
- #ans{
+ /* #ans{
   grid-column: span 2;
- }
+ } */
 
  #display{
     font-weight: bold;
@@ -77,3 +83,15 @@
   grid-template-columns: repeat(2, 2fr);
   gap: 135px;
  }
+
+ ::-webkit-scrollbar {
+  width: 7px
+}
+
+::-webkit-scrollbar-track {
+  background: red;
+}
+
+::-webkit-scrollbar-thumb {
+  background: yellow;
+}

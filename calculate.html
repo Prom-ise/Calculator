@@ -38,14 +38,14 @@
         <button class="btn btn-dark text-light" onclick="digit('1')">1</button>
         <button class="btn btn-dark text-light" onclick="digit('2')">2</button>
         <button class="btn btn-dark text-light" onclick="digit('3')">3</button>
-        <button class="btn btn-dark text-primary" id="equal" onclick="signs('=')">=</button>
-        <button class="btn btn-dark text-primary" onclick="signs('%')">%</button>
+        <button class="btn btn-dark text-primary" id="equal" onclick="calculate('=')">=</button>
+        <button class="btn btn-dark text-primary" onclick="percentA('%')">%</button>
         <button class="btn btn-dark text-light" onclick="digit('0')">0</button>
-        <button class="btn btn-dark text-primary" onclick="appendDecimal()">.</button>
-        <button class="btn btn-dark text-primary" onclick="signs('sqrt')">√</button>
+        <button class="btn btn-dark text-primary" onclick="digit('.')">.</button>
+        <button class="btn btn-dark text-primary" onclick="squareRoot('sqrt')">√</button>
         <button class="btn btn-dark text-light" onclick="digit('00')">00</button>
-        <button class="btn btn-dark text-primary" onclick="appendAnswer()">Ans</button>
-        <button class="btn btn-dark text-primary" onclick="signs()">x²</button>
+        <button class="btn btn-dark text-primary" onclick="appendAnswer('ans')">Ans</button>
+        <button class="btn btn-dark text-primary" onclick="squareOf('^')">^</button>
     </div>
 
     <div class="alert container-fluid mx-auto col-lg-12 col-11 rounded-3 text-primary bg-dark text-center p-2 mt-4" style="display: none;" id="alerts">
@@ -53,6 +53,6 @@
     </div>
     </div>
 
-    <script src="calcu.js"></script>
+    <script src="calcul.js"></script>
 </body>
 </html>
