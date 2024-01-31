@@ -1,58 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CALCULATOR</title>
-    <link rel="stylesheet" href="calcu.css">
-    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css">
-
-</head>
-<body>
-    <div class="calculator container-fluid my-5 col-lg-3 col-9 shadow-sm mt-lg-5 p-3">
-        <div class="time container-fluid ms-1 col-lg-7 col-6 text-dark rounded-3" id="timeDisplay"></div>
-        <div class="times container-fluid ms-1 col-lg-7 col-6 text-dark rounded-3" id="timeDisplays" style="display: none;"></div>
-
-        <div class="promise container-fluid col-lg-10 col-11 text-center">PROMISE CALCULATOR I</div>
-        <input type="text" id="display" class="text-end container-fluid mx-auto col-lg-12 col-12 mb-4" readonly>
-    <input type="text" id="displayTwo" style="display: none;" class="input text-end container-fluid mx-auto col-lg-12 col-12 mb-4" readonly>
-
-    <div class="butt col-lg-7 col-12">
-    <button class="btn btn-danger btn-sm text-light" onclick="toggleCalculator()">OFF</button>
-    <button class="btn btn-success btn-sm text-light " onclick="turnOnCalculator()">ON</button>
+    <link rel="stylesheet" href="calcu.css" />
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div
+      class="calculator my-5 col-lg-3 col-9 shadow-sm mt-lg-5"
+    >
+      <div
+      class="time container ms-3 col-lg-4 col-6 text-dark rounded-3"
+      id="timeDisplay"
+    ></div>
+    <div
+      class="times container ms-3 col-lg-4 col-6 text-dark rounded-3"
+      id="timeDisplays"
+      style="display: none"
+    ></div>
+    <div class="text-light text-center" style="display: none;" id="erro">
+      SYNTAX ERROR
     </div>
+      <input
+        type="text"
+        id="display"
+        class="input text-end container-fluid mx-auto col-lg-12 col-12 mb-4"
+        readonly
+      />
+      <input
+        type="text"
+        id="displayTwo"
+        style="display: none"
+        class="input text-end container-fluid mx-auto col-lg-12 col-12 mb-4"
+        readonly
+      />
 
-    <div class="buttons col-lg-12 col-12">
-        <button class="btn btn-dark text-primary" onclick="Clear()">C</button>
-        <button class="btn btn-dark text-primary" onclick="signs('÷')">÷</button>
-        <button class="btn btn-dark text-primary" onclick="signs('×')">×</button>
-        <button class="btn btn-dark text-primary" onclick="backspace()">←</button>
-        <button class="btn btn-dark text-light" onclick="digit('7')">7</button>
-        <button class="btn btn-dark text-light" onclick="digit('8')">8</button>
-        <button class="btn btn-dark text-light" onclick="digit('9')">9</button>
-        <button class="btn btn-dark text-primary" onclick="signs('-')">-</button>
-        <button class="btn btn-dark text-light" onclick="digit('4')">4</button>
-        <button class="btn btn-dark text-light" onclick="digit('5')">5</button>
-        <button class="btn btn-dark text-light" onclick="digit('6')">6</button>
-        <button class="btn btn-dark text-primary" onclick="signs('+')">+</button>
-        <button class="btn btn-dark text-light" onclick="digit('1')">1</button>
-        <button class="btn btn-dark text-light" onclick="digit('2')">2</button>
-        <button class="btn btn-dark text-light" onclick="digit('3')">3</button>
-        <button class="btn btn-dark text-primary" id="equal" onclick="calculate('=')">=</button>
-        <button class="btn btn-dark text-primary" onclick="percentA('%')">%</button>
-        <button class="btn btn-dark text-light" onclick="digit('0')">0</button>
-        <button class="btn btn-dark text-primary" onclick="digit('.')">.</button>
-        <button class="btn btn-dark text-primary" onclick="squareRoot('sqrt')">√</button>
-        <button class="btn btn-dark text-light" onclick="digit('00')">00</button>
-        <button class="btn btn-dark text-primary" onclick="appendAnswer('ans')">Ans</button>
-        <button class="btn btn-dark text-primary" onclick="squareOf('^')">^</button>
-    </div>
+      <div class="butto col-lg-12 col-12">
+        <div class="promise col-lg-10 col-11 text-center">
+          PROMISE CALCULATOR I
+        </div>
+<div style="display: flex;">
+          <button
+            class="off btn-sm text-light"
+            onclick="toggleCalculator()"
+          >
+            OFF
+          </button>
+          <button onclick="shift()" id="shift" class="shift mx-auto me-3">Shift</button>
+          <button onclick="shifts()" id="shifts" style="display: none;" class="shift me-3 mx-auto">Shift</button>
+          <button
+            class="on mx-auto me-0 btn-sm text-light"
+            onclick="turnOnCalculator()"
+          >ON</button>
+</div>
+          <div class="buttons" id="buttons">
 
-    <div class="alert container-fluid mx-auto col-lg-12 col-11 rounded-3 text-primary bg-dark text-center p-2 mt-4" style="display: none;" id="alerts">
+        <button class="keys text-primary" onclick="Clear()">C</button>
+        <button class="keys text-primary operators" onclick="signs('÷')">
+          ÷
+        </button>
+        <button class="keys text-primary operators" onclick="signs('×')">
+          ×
+        </button>
+        <button class="keys text-primary" onclick="backspace()">
+          ←
+        </button>
+        <button class="keys text-light" onclick="digit('7')">7</button>
+        <button class="keys text-light" onclick="digit('8')">8</button>
+        <button class="keys text-light" onclick="digit('9')">9</button>
+        <button class="keys text-primary operators" onclick="signs('-')">
+          -
+        </button>
+        <button class="keys text-light" onclick="digit('4')">4</button>
+        <button class="keys text-light" onclick="digit('5')">5</button>
+        <button class="keys text-light" onclick="digit('6')">6</button>
+        <button class="keys text-primary operators" onclick="signs('+')">
+          +
+        </button>
+        <button class="keys text-light" onclick="digit('1')">1</button>
+        <button class="keys text-light" onclick="digit('2')">2</button>
+        <button class="keys text-light" onclick="digit('3')">3</button>
+        <button
+          class="keys text-primary"
+          id="equal"
+          onclick="calculate('=')"
+        >
+          =
+        </button>
+        <button class="keys text-primary" onclick="percentA('%')">
+          %
+        </button>
+        <button class="keys text-light" onclick="digit('0')">0</button>
+        <button class="keys text-primary" onclick="digit('.')">
+          .
+        </button>
+        <button class="keys text-primary" onclick="squareRoot('sqrt')">
+          √
+        </button>
+        <button class="keys text-light" onclick="digit('00')">
+          00
+        </button>
+        <button class="keys text-primary" onclick="appendAnswer('ans')">
+          Ans
+        </button>
+        <button class="keys text-primary" onclick="squareOf('^')">
+          ^
+        </button>
+        </div>
+
+        <div class="buttons2" id="buttons2" style="display:none">
+
+        <button class="keys text-primary" onclick="signs('+')">+</button>
+        <button class="keys text-primary operators" onclick="signs('(')">
+          (
+        </button>
+        <button class="keys text-primary operators" onclick="signs(')')">
+          )
+        </button>
+        <button class="keys text-primary" onclick="backspace()">
+          ←
+        </button>
+        <button class="keys text-light" onclick="digit('7')">7</button>
+        <button class="keys text-light" onclick="digit('8')">8</button>
+        <button class="keys text-light" onclick="digit('9')">9</button>
+        <button class="keys text-primary operators" onclick="signs('sin(')">
+          sin
+        </button>
+        <button class="keys text-light" onclick="digit('4')">4</button>
+        <button class="keys text-light" onclick="digit('5')">5</button>
+        <button class="keys text-light" onclick="digit('6')">6</button>
+        <button class="keys text-primary operators" onclick="signs('cos(')">
+          cos
+        </button>
+        <button class="keys text-light" onclick="digit('1')">1</button>
+        <button class="keys text-light" onclick="digit('2')">2</button>
+        <button class="keys text-light" onclick="digit('3')">3</button>
+        <button
+          class="keys text-primary"
+          id="equal"
+          onclick="calculate('=')"
+        >
+          =
+        </button>
+        <button class="keys text-primary" onclick="signs('÷')">
+          ÷
+        </button>
+        <button class="keys text-light" onclick="digit('0')">0</button>
+       <!-- Inside the buttons div -->
+<button class="keys text-primary" onclick="signs('log(')">
+  log
+</button>
+
+        <button class="keys text-primary" onclick="signs('×')">
+          ×
+        </button>
+        <button class="keys text-primary" onclick="signs('-')">
+          -
+        </button>
+        <button class="keys text-primary" onclick="digit('.')">
+          .
+        </button>
+        <button class="keys text-primary" onclick="signs('tan(')">
+          tan
+        </button>
+        </div>
+      </div>
+
+      <!-- <div
+        class="alert container-fluid mx-auto col-lg-12 col-11 rounded-3 keys text-primary bg-dark text-center p-2 mt-4"
+        style="display: none"
+        id="alerts"
+      >
         Invalid! Cannot divide by Zero <span class="text-light">'0'</span>
-    </div>
+      </div> -->
     </div>
 
     <script src="calcul.js"></script>
-</body>
+  </body>
 </html>

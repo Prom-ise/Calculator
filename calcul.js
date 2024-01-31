@@ -5,12 +5,13 @@ const display = document.getElementById("display");
 const displayTwo = document.getElementById("displayTwo");
 
 function toggleCalculator() {
-    calculatorOn = !calculatorOn;
+    calculatorOn = !calculatorOn; //null
     Clear();
     displayTwo.style.display = 'block';
     display.style.display = 'none';
     timeDisplays.style.display = 'block';
     timeDisplay.style.display = 'none';
+    erro.style.display = 'none'
 }
 
 function turnOnCalculator() {
@@ -20,6 +21,28 @@ function turnOnCalculator() {
     display.style.display = 'block';
     timeDisplay.style.display = 'block';
     timeDisplays.style.display = 'none';
+}
+
+function shift() {
+    let buttons2 = document.getElementById("buttons2");
+    let buttons = document.getElementById("buttons");
+    let shift = document.getElementById("shift");
+    let shifts = document.getElementById("shifts");
+    shift.style.display =  'none';
+    shifts.style.display =  'block';
+    buttons2.style.display = 'grid';
+    buttons.style.display = 'none';
+}
+
+function shifts() {
+    let buttons2 = document.getElementById("buttons2")
+    let buttons = document.getElementById("buttons")
+    let shifts = document.getElementById("shifts")
+    let shift = document.getElementById("shift")
+    shift.style.display =  'block'
+    shifts.style.display =  'none'
+    buttons2.style.display = 'none'
+    buttons.style.display = 'grid'
 }
 
 function digit(number) {
@@ -37,7 +60,11 @@ function squareRoot() {
     if (numberInput >= 0) {
         display.value = Math.sqrt(numberInput);
     } else {
-        display.value = 'Syntax Error';
+        Clear();
+        erro.style.display = "block"
+        setTimeout(() => {
+            erro.style.display = 'none'
+        }, 2000);
     }
 }
 
@@ -65,16 +92,25 @@ function Clear() {
 }
 
 function calculate() {
+    let erro = document.getElementById("erro");
     try {
-        let expression = display.value.replace(/\^/g, '**').replace(/%/g, '/100').replace(/×/g, '*').replace(/÷/g, '/');
+        let expression = display.value.replace(/\^/g, '**').replace(/%/g, '/100').replace(/×/g, '*').replace(/÷/g, '/').replace(/(\d+)\(/g, '$1*(').replace(/\)(\d+)/g, ')*$1').replace(/log\(/g, 'Math.log(');
+
+        expression = expression.replace(/sin\(/g, 'Math.sin(');
+        expression = expression.replace(/cos\(/g, 'Math.cos(');
+        expression = expression.replace(/tan\(/g, 'Math.tan(');
+
         let result = eval(expression);
         lastResult = result; // Save the result for later use
         display.value = result;
         display.value = new Function('return ' + display.value)();
     } catch (error) {
-        display.value = 'Error';
-        Clear();
-        display.value += lastResult; // Display the last result on error
+        display.value = '';
+        erro.style.display = "block"
+        setTimeout(() => {
+            erro.style.display = 'none'
+        }, 2000);
+        //display.value += lastResult; // Display the last result on error
     }
 }
 
