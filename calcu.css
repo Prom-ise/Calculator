@@ -180,3 +180,9 @@ body{
 ::-webkit-scrollbar-thumb {
   background: yellow;
 }
+@media (max-width: 780px) {
+  body{
+    display: block;
+    padding-left: 20%;
+  }
+}
